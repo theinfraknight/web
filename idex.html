@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Infra Knight - Cloud Engineering Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="banner-container">
+                <img src="youtube-channel-banner.png" alt="The Infra Knight Banner" class="hero-banner">
+            </div>
+            <p class="hero-description">
+                Καλώς ορίσατε στο portfolio μου. Εδώ παρουσιάζω projects βασισμένα σε Immutable Infrastructure, 
+                Infrastructure as Code, Secure Secret Management και GitOps Pipelines.
+            </p>
+        </header>
+
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterProjects('all')">All Projects</button>
+            <button class="filter-btn" onclick="filterProjects('terraform')">Terraform</button>
+            <button class="filter-btn" onclick="filterProjects('packer')">Packer</button>
+            <button class="filter-btn" onclick="filterProjects('aws')">AWS</button>
+            <button class="filter-btn" onclick="filterProjects('vault')">HashiCorp Vault</button>
+            <button class="filter-btn" onclick="filterProjects('cicd')">CI/CD</button>
+        </div>
+
+        <div class="grid" id="portfolio-grid">
+            
+            <div class="card" data-tags="terraform aws">
+                <div>
+                    <h3>Multi-AZ VPC Production Network</h3>
+                    <p>Σχεδιασμός και υλοποίηση δικτυακής υποδομής υψηλής διαθεσιμότητας στην AWS με χρήση Terraform modules.</p>
+                </div>
+                <div class="tag-container">
+                    <span class="tag tf">Terraform</span>
+                    <span class="tag aws">AWS</span>
+                </div>
+            </div>
+
+            <div class="card" data-tags="packer aws">
+                <div>
+                    <h3>Automated Golden AMI Factory</h3>
+                    <p>Δημιουργία αυτοματοποιημένου workflow με το Packer για το χτίσιμο "σκληρυμένων" Ubuntu AMIs στην AWS.</p>
+                </div>
+                <div class="tag-container">
+                    <span class="tag packer">Packer</span>
+                    <span class="tag aws">AWS</span>
+                </div>
+            </div>
+
+            <div class="card" data-tags="terraform vault aws">
+                <div>
+                    <h3>Dynamic Secret Injection</h3>
+                    <p>Το Terraform επικοινωνεί με το HashiCorp Vault για την on-the-fly παραγωγή short-lived database credentials.</p>
+                </div>
+                <div class="tag-container">
+                    <span class="tag tf">Terraform</span>
+                    <span class="tag vault">Vault</span>
+                    <span class="tag aws">AWS</span>
+                </div>
+            </div>
+
+            <div class="card" data-tags="cicd aws">
+                <div>
+                    <h3>GitOps S3 Deploy Workflow</h3>
+                    <p>Pipeline μέσω GitHub Actions που εκτελεί αυτόματα linting, security scanning και συγχρονίζει τα static assets σε AWS S3.</p>
+                </div>
+                <div class="tag-container">
+                    <span class="tag cicd">CI/CD</span>
+                    <span class="tag aws">AWS</span>
+                </div>
+            </div>
+
+            <div class="card" data-tags="terraform cicd">
+                <div>
+                    <h3>Infrastructure CI/CD Pipeline</h3>
+                    <p>Ένα ολοκληρωμένο GitHub Actions pipeline για αυτόματο έλεγχο κώδικα Terraform (tflint, fmt, plan, apply).</p>
+                </div>
+                <div class="tag-container">
+                    <span class="tag tf">Terraform</span>
+                    <span class="tag cicd">CI/CD</span>
+                </div>
+            </div>
+
+            <div class="card" data-tags="vault">
+                <div>
+                    <h3>Vault Transit Secret Engine</h3>
+                    <p>Ρύθμιση του Vault ως Encryption-as-a-Service (EaaS) για κρυπτογράφηση δεδομένων εφαρμογών on-the-fly.</p>
+                </div>
+                <div class="tag-container">
+                    <span class="tag vault">Vault</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="cicd-banner">
+            <h4>🔄 GitOps Live Demonstration</h4>
+            <p>Αυτή η σελίδα φιλοξενείται στο <strong>GitHub Pages</strong>. Κάθε φορά που πραγματοποιείται αλλαγή στον κώδικα, ένα <strong>GitHub Actions Workflow</strong> αναλαμβάνει το αυτόματο deployment.</p>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 The Infra Knight • Built with HTML, CSS & GitOps</p>
+        </footer>
+    </div>
+
+    <script>
+        function filterProjects(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
+
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                const tags = card.getAttribute('data-tags');
+                if (category === 'all' || tags.includes(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+/* CSS Variables & Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent-tf: #844FBA;
+    --accent-aws: #FF9900;
+    --accent-vault: #15b7b9;
+    --accent-github: #60a5fa;
+    --border-color: #334155;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Header & Banner Styling */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.banner-container {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 25px;
+    box-shadow: 0 0 25px rgba(96, 165, 250, 0.15); /* Απαλό glow που ταιριάζει με το banner */
+    border: 1px solid var(--border-color);
+}
+
+.hero-banner {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.hero-description {
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+/* Filters Section */
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background-color: var(--text-main);
+    color: var(--bg-color);
+    border-color: var(--text-main);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+/* Portfolio Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+/* Card Styling */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Custom Glow/Border per Stack on Hover */
+.card[data-tags*="terraform"]:hover { border-color: var(--accent-tf); box-shadow: 0 5px 15px rgba(132, 79, 186, 0.15); }
+.card[data-tags*="aws"]:hover { border-color: var(--accent-aws); box-shadow: 0 5px 15px rgba(255, 153, 0, 0.15); }
+.card[data-tags*="vault"]:hover { border-color: var(--accent-vault); box-shadow: 0 5px 15px rgba(21, 183, 185, 0.15); }
+.card[data-tags*="cicd"]:hover { border-color: var(--accent-github); box-shadow: 0 5px 15px rgba(96, 165, 250, 0.15); }
+
+.card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+
+.card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+/* Tags */
+.tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.05em;
+}
+
+.tag.tf { color: var(--accent-tf); background-color: rgba(132, 79, 186, 0.12); }
+.tag.aws { color: var(--accent-aws); background-color: rgba(255, 153, 0, 0.12); }
+.tag.vault { color: var(--accent-vault); background-color: rgba(21, 183, 185, 0.12); }
+.tag.cicd { color: var(--accent-github); background-color: rgba(96, 165, 250, 0.12); }
+.tag.packer { color: #f25f5c; background-color: rgba(242, 95, 92, 0.12); }
+
+/* Banner Bottom */
+.cicd-banner {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 1px dashed var(--accent-github);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.cicd-banner h4 {
+    color: var(--accent-github);
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.cicd-banner p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
